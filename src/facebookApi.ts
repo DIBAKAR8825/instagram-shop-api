@@ -8,7 +8,7 @@ export interface Product {
   image_url: string;
   url: string;
   brand: string;
-  price: string; // smallest unit e.g. 120000 for INR 1200
+  price: string; // smallest unit e.g. 120000 for GBP 1200
   currency: string;
   availability: string;
   condition: string;
@@ -16,7 +16,7 @@ export interface Product {
 
 export async function addProductToCatalog(product: Product) {
   const response = await axios.post(
-    `https://graph.facebook.com/v19.0/${FB_CATALOG_ID}/products`,
+    `https://graph.facebook.com/v24.0/${FB_CATALOG_ID}/products`,
     product,
     { params: { access_token: FB_ACCESS_TOKEN } }
   );
