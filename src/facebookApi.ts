@@ -8,23 +8,17 @@ export interface Product {
   image_url: string;
   url: string;
   brand: string;
-  price: string;
+  price: string; // smallest unit e.g. 120000 for INR 1200
   currency: string;
   availability: string;
   condition: string;
 }
 
 export async function addProductToCatalog(product: Product) {
-  try {
-    const response = await axios.post(
-      `https://graph.facebook.com/v24.0/${FB_CATALOG_ID}/products`,
-      product,
-      { params: { access_token: FB_ACCESS_TOKEN } }
-    );
-    console.log("Product Added:", response.data);
-    return response.data;
-  } catch (error: any) {
-    console.error("Error adding product:", error.response?.data || error.message);
-    throw error;
-  }
+  const response = await axios.post(
+    `https://graph.facebook.com/v19.0/${FB_CATALOG_ID}/products`,
+    product,
+    { params: { access_token: FB_ACCESS_TOKEN } }
+  );
+  return response.data;
 }
