@@ -111,6 +111,7 @@ curl --location 'http://localhost:3000/add-product' \
   "availability": "in stock",
   "condition": "new"
 }'
+```
 
 ```json
 {
